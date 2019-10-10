@@ -19,20 +19,20 @@ type Handler func(*Request) Response
 package main
 
 import (
-  "github.com/kvartborg/http"
-  "github.com/kvartborg/http/response"
+    "github.com/kvartborg/http"
+    "github.com/kvartborg/http/response"
 )
 
 func Hello(*http.Request) http.Response {
-  return response.Text("Hello world!")
+    return response.Text("Hello world!")
 }
 
 func Authenticate(req *http.Request) http.Response {
-  if req.Query.Has("auth") {
-    return response.Next()
-  }
+    if req.Query.Has("auth") {
+        return response.Next()
+    }
 
-  return response.Unauthorized()
+    return response.Unauthorized()
 }
 
 func main() {
