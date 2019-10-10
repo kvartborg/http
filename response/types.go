@@ -6,15 +6,14 @@ import (
 	"html/template"
 	"log"
 	"net/http"
-	"strings"
 )
 
 func Ok() Response {
 	return New(http.StatusOK, defaultHeader, []byte(""))
 }
 
-func Error(errors ...string) Response {
-	return New(http.StatusInternalServerError, defaultHeader, []byte(strings.Join(errors, " ")))
+func Error(err error) Response {
+	return New(http.StatusInternalServerError, defaultHeader, []byte(err.Error()))
 }
 
 func NoResponse() Response {
@@ -45,7 +44,7 @@ func Json(d interface{}) Response {
 	data, err := json.Marshal(d)
 
 	if err != nil {
-		return Error(err.Error())
+		return Error(err)
 	}
 
 	return New(http.StatusOK, http.Header{"Content-Type": {"application/json"}}, []byte(data))

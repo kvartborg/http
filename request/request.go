@@ -7,8 +7,6 @@ import (
 	"mime/multipart"
 	"net/http"
 	"net/url"
-
-	"github.com/gorilla/mux"
 )
 
 type Request struct {
@@ -41,7 +39,7 @@ func New(r *http.Request) *Request {
 		Method:        r.Method,
 		URL:           r.URL,
 		Query:         Query(r.URL.Query()),
-		Param:         mux.Vars(r),
+		Param:         nil,
 		Header:        r.Header,
 		Body:          body,
 		ContentLength: r.ContentLength,
