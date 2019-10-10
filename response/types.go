@@ -29,8 +29,8 @@ func BadRequest(msg string) Response {
 	return New(http.StatusBadRequest, defaultHeader, []byte("400 - Bad request"))
 }
 
-func UnAuthorized() Response {
-	return New(http.StatusUnauthorized, defaultHeader, []byte("401 - Not Autherized"))
+func Unauthorized() Response {
+	return New(http.StatusUnauthorized, defaultHeader, []byte("401 - Unautherized"))
 }
 
 func Forbidden() Response {

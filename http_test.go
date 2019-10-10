@@ -16,7 +16,7 @@ func Hello(req *http.Request) http.Response {
 
 func Auth(req *http.Request) http.Response {
 	if !req.Query.Has("auth") {
-		return response.UnAuthorized()
+		return response.Unauthorized()
 	}
 
 	return response.Next()

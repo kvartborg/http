@@ -32,7 +32,7 @@ func Authenticate(req *http.Request) http.Response {
     return response.Next()
   }
 
-  return response.UnAuthorized()
+  return response.Unauthorized()
 }
 
 func main() {
